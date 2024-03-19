@@ -1,152 +1,110 @@
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         task1();
         task2();
         task3();
-        task4();
-        task5();
-    }
+        task4_1();
+        task4_2();
 
+    }
     public static void task1() {
-        int a = 1,  b = 3,  c = 7, d = 6, e = 5, z=4, x=8, m=7, v=9, n=10;
-        float sum, minus, mul, div;
-        sum =  a + b + c + d + e + z + m + v + n;
-        minus = a - b - c - d - e - z - x - m - v - n;
-        mul = a * b * c * d * e * z * x * m * v * n;
-        div = (float)a / b / c / d / e / z / x / m / v / n;
-        System.out.println("task 1");
-        System.out.println("Sum=" + sum);
-        System.out.println("Difference=" + minus);
-        System.out.println("Product=" + mul);
-        System.out.println("Fraction=" + div);
-    }
+        Scanner scan = new Scanner(System.in);
+        System.out.printf("a=");
+        int a = scan.nextInt();
+        System.out.printf("b=");
+        int b = scan.nextInt();
+        System.out.printf("c=");
+        int c = scan.nextInt();
 
+        double x1, x2, D, KorD;
+        D = b * b - 4 * a * c;
+        if (D < 0) {
+            System.out.println("Розвязків немає");
+        } else {
+            KorD = Math.sqrt(D);
+            x1 = (-b + D) / a;
+            x2 = (-b - D) / a;
+            System.out.println("x1=" + x1);
+            System.out.println("x2=" + x2);
+        }
+    }
     public static void task2() {
-        String z= "Come", x= "up", c= "with", v= "a", b="sentence", n="of",  m="10",  a= "-", s = "12", d = "words", f=".";
-        System.out.println("task 2");
-        System.out.println(z + " " + x + " " + c + " " + v + " " + b + " " + n + " " + m + " " + a + " " + s + " " + d + " " + f);
-    }
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введіть координату x: ");
+        double x = scanner.nextDouble();
+        System.out.print("Введіть координату y: ");
+        double y = scanner.nextDouble();
 
+        int quadrant;
+
+        if (x > 0 && y > 0) {
+            quadrant = 1;
+        } else if (x < 0 && y > 0) {
+            quadrant = 2;
+        } else if (x < 0 && y < 0) {
+            quadrant = 3;
+        } else if (x > 0 && y < 0) {
+            quadrant = 4;
+        } else {
+            quadrant = 0; // якщо точка знаходиться на одній з координатних вісей або у початковій точці
+        }
+        if (quadrant != 0) {
+            System.out.println("Точка знаходиться в квадранті " + quadrant);
+        } else {
+            System.out.println("Точка знаходиться на одній з координатних вісей або у початковій точці");
+        }
+    }
     public static void task3() {
-        User[] users = new User[10];
-        users[0] = new User(1, 25, "John", "Doe", 70.5, 175.2);
-        users[1] = new User(2, 30, "Jane", "Smith", 65.2, 165.0);
-        users[2] = new User(3, 28, "Michael", "Johnson", 80.0, 180.5);
-        users[3] = new User(4, 35, "Emily", "Brown", 55.7, 160.8);
-        users[4] = new User(5, 22, "David", "Wilson", 68.3, 172.3);
-        users[5] = new User(6, 27, "Sarah", "Martinez", 63.9, 168.7);
-        users[6] = new User(7, 33, "Jessica", "Lee", 75.1, 177.4);
-        users[7] = new User(8, 29, "Daniel", "Taylor", 72.6, 173.9);
-        users[8] = new User(9, 31, "Ashley", "Anderson", 61.8, 163.2);
-        users[9] = new User(10, 26, "Christopher", "Thomas", 77.4, 181.1);
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введіть число: ");
+        int number = scanner.nextInt();
 
-        int totalAge = 0;
-        for (User user : users) {
-            totalAge += user.age;
+        if (number >= 10 && number <= 99) { // Перевірка, чи є число двозначним
+            if (number % 2 == 0) { // Перевірка, чи є число парним
+                System.out.println("Число " + number + " є двозначним і парним.");
+            } else {
+                System.out.println("Число " + number + " є двозначним, але не парним.");
+            }
+        } else {
+            System.out.println("Число не є двозначним.");
         }
-        System.out.println("task 3");
-        System.out.println("Sum years: " + totalAge);
-
-        double totalWeight = 0;
-        for (User user : users) {
-            totalWeight += user.weight;
-        }
-        System.out.println("Sum Weight: " + totalWeight);
-
-        double totalHeight = 0;
-        for (User user : users) {
-            totalHeight += user.height;
-        }
-        System.out.println("Sum height: " + totalHeight);
     }
-
-    public static void task4() {
-        Car[] cars = new Car[10];
-        cars[0] = new Car(150, 2.0, "Toyota", "Corolla", 2015, "Blue");
-        cars[1] = new Car(200, 2.5, "Honda", "Civic", 2018, "Red");
-        cars[2] = new Car(180, 1.8, "Ford", "Focus", 2017, "White");
-        cars[3] = new Car(250, 3.0, "BMW", "3 Series", 2016, "Black");
-        cars[4] = new Car(300, 3.5, "Audi", "A4", 2019, "Silver");
-        cars[5] = new Car(170, 2.2, "Hyundai", "Elantra", 2014, "Green");
-        cars[6] = new Car(190, 2.3, "Mercedes-Benz", "C-Class", 2017, "Gray");
-        cars[7] = new Car(220, 2.7, "Nissan", "Altima", 2018, "Orange");
-        cars[8] = new Car(260, 3.2, "Lexus", "IS", 2015, "Yellow");
-        cars[9] = new Car(280, 3.6, "Chevrolet", "Malibu", 2016, "Brown");
-
-        double totalEngineVolume = 0;
-        for (Car car : cars) {
-            totalEngineVolume += car.getEngineVolume();
+    public static void task4_1() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введіть значення x= ");
+        double x = scanner.nextDouble();
+        double f;
+        if (x < -2) {
+            f = Math.exp(2 * x);
+        } else if (x >= -2 && x <= 5) {
+            f = 1 / Math.tan(x);
+        } else {
+            f = Math.pow(x, 4);
         }
-        System.out.println("task 4");
-        System.out.println("Sum engine Volume: " + totalEngineVolume);
-
-        int totalHorsepower = 0;
-        for (Car car : cars) {
-            totalHorsepower += car.getHorsepower();
-        }
-        System.out.println("Sum Horse power: " + totalHorsepower);
+        System.out.println("f(x) = " + f);
     }
+    public static void task4_2() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введіть число від 1 до 59 : ");
+        int min = scanner.nextInt();
 
-    public static void task5() {
-        int number = 512;
-        int reversedNumber = reverseNumber(number);
-        System.out.println("task 5");
-        System.out.println("Reversed Number: " + reversedNumber);
-    }
-
-    public static int reverseNumber(int number) {
-        int reversedNumber = 0;
-
-        while (number != 0) {
-            int digit = number % 10;
-            reversedNumber = reversedNumber * 10 + digit;
-            number = number / 10;
+        if (min > 0 && min < 16) {
+            System.out.println("1 чверьть години");
+        }
+        else if (min > 15 && min < 30) {
+            System.out.println("2 чверьть години");
+        }
+        else if (min > 30 && min < 45) {
+            System.out.println("3 чверьть години");
         }
 
-        return reversedNumber;
+        else if (min > 45 && min < 59) {
+            System.out.println("4 чверьть години");
+        }
+        else   {
+            System.out.println("не коректне число");
+        }
     }
 }
 
-class User {
-    int id;
-    int age;
-    String name;
-    String surname;
-    double weight;
-    double height;
-
-    public User(int id, int age, String name, String surname, double weight, double height) {
-        this.id = id;
-        this.age = age;
-        this.name = name;
-        this.surname = surname;
-        this.weight = weight;
-        this.height = height;
-    }
-}
-
-class Car {
-    private int horsepower;
-    private double engineVolume;
-    private String brand;
-    private String model;
-    private int year;
-    private String color;
-
-    public Car(int horsepower, double engineVolume, String brand, String model, int year, String color) {
-        this.horsepower = horsepower;
-        this.engineVolume = engineVolume;
-        this.brand = brand;
-        this.model = model;
-        this.year = year;
-        this.color = color;
-    }
-
-    public double getEngineVolume() {
-        return engineVolume;
-    }
-
-    public int getHorsepower() {
-        return horsepower;
-    }
-}
